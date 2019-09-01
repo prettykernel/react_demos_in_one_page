@@ -54,18 +54,24 @@ React 组件可以理解为纯函数，输入是 props 和 state，输出是 Vie
 2. 组件尽量无状态，所需数据通过 props 获取
 
 getDerivedStateFromProps 用法：
-1.当 stae 需要从 props 初始化时使用 
-2.尽量不要使用：维护两者的状态一致性会增加复杂度？？？ antd 例子 
-3.每次 VIRHIV 都会调用 
-4.典型场景g表单控件获取默认值 
+1. 当 stae 需要从 props 初始化时使用 
+2. 尽量不要使用：维护两者的状态一致性会增加复杂度？？？ antd 例子 
+3. 每次 render 都会调用 
+4. 典型场景：S表单控件获取默认值 
+
+getSnapshotBeforeUpdate 用法：
+1. 在页面 render 前调用，state 已更新
+2. 典型场景：获取 render 前的 DOM 状态
+
+componentDidUpdate
+典型场景：页面需要根据 props 变化重新获取数据
+
+shouldComponentUpdate
+一般可以由 PureComponent 自动实现
 
 
-
-
-
-
-
-
+VDOM diff
+广度优先分层比较，算法复杂度为 O(n)。
 
 
 
