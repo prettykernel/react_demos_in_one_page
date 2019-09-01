@@ -1,5 +1,7 @@
 git clone https://github.com/supnate/react-geek-time.git
+
 cd react-geek-time/
+
 yarn yarn start
 
 
