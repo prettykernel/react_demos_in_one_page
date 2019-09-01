@@ -55,7 +55,7 @@ React 组件可以理解为纯函数，输入是 props 和 state，输出是 Vie
 
 getDerivedStateFromProps 用法：
 1.当 stae 需要从 props 初始化时使用 
-2.尽量不要使用：维护n者状态一致性会增加复杂度 
+2.尽量不要使用：维护两者的状态一致性会增加复杂度？？？ antd 例子 
 3.每次 VIRHIV 都会调用 
 4.典型场景g表单控件获取默认值 
 
