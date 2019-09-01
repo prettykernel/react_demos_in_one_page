@@ -1,4 +1,4 @@
-git clone https://github.com/supnate/react-geek-time.git
+git clone https://github.com/prettykernel/react_demos_in_one_page
 
 cd react-geek-time/
 
