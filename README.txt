@@ -2,7 +2,9 @@ git clone https://github.com/prettykernel/react_demos_in_one_page
 
 cd react-geek-time/
 
-yarn yarn start
+yarn
+
+yarn start
 
 
 # Demo 结构
