@@ -1,45 +1,46 @@
-import React from "react";
-import withTimer from "../c06/withTimer";
+import React, { Component } from 'react'
+import withTimer from "../c06/withTimer"
+import PropTypes from "prop-types"
 
-class MessageList extends React.PureComponent {
-  render() {
-    return <ul>{this.props.messages.map(msg => <li>{msg}</li>)}</ul>;
+
+const MessageList = ({ messages }) => <ul>
+  {messages.map((msg, i) => <li key={i}>{msg}</li>)}
+</ul>
+
+
+export class ChatApp extends Component {
+  static propTypes = {
+    time: PropTypes.object.isRequired,
   }
-}
 
-export class ChatApp extends React.Component {
   state = {
     messages: [],
     inputMsg: "",
-  };
+  }
 
-  handleInput = evt => {
-    this.setState({
-      inputMsg: evt.target.value,
-    });
-  };
+  handleInput = event => {
+    this.setState({ inputMsg: event.target.value })
+  }
+
   handleSend = () => {
-    const text = this.state.inputMsg;
+    const text = this.state.inputMsg
     if (text) {
-      const newMessages = [...this.state.messages, text];
       this.setState({
-        messages: newMessages,
+        messages: [...this.state.messages, text],
         inputMsg: "",
-      });
+      })
     }
-  };
+  }
+
   render() {
-    return (
-      <div>
+    return <>
         <MessageList messages={this.state.messages} />
-        <div>
-          <input value={this.state.inputMsg} />
-          <button onClick={this.handleSend}>Send</button>
-        </div>
+        <input value={this.state.inputMsg} onChange={this.handleInput} />
+        <button onClick={this.handleSend}>Send</button>
         <h2>{this.props.time.toLocaleString()}</h2>
-      </div>
-    );
+    </>
   }
 }
 
-export default withTimer(ChatApp);
+export default withTimer(ChatApp)
+

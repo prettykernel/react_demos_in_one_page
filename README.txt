@@ -78,5 +78,21 @@ VDOM diff
 
 Redux 特性：
 single source of truth
+可预测性：state + action = newstate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

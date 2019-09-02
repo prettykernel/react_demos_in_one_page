@@ -36,6 +36,11 @@ import "antd/dist/antd.css"
 
 import "./index.css"
 
+
+const Hello = () => <>
+  <h1>Click the sidebar to navigate!</h1>
+</>
+
 const styles = {
   fontFamily: "sans-serif",
   paddingLeft: "250px",
@@ -85,7 +90,7 @@ class App extends React.PureComponent {
   render() {
     const currentPage = document.location.hash.replace(/#\/?/, "")
 
-    let CurrentPage = routeMap[currentPage] || <h1>Click the left side menu to navigate !</h1>
+    let CurrentPage = routeMap[currentPage] || Hello
     if (currentPage.match(/\/user\/\w+|\/list-page/)) {
       CurrentPage = ListSample
     }
