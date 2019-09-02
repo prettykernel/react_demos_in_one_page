@@ -1,6 +1,6 @@
 import React from "react"
 import { render } from "react-dom"
-import Hello from "./Hello"
+
 import ChatApp from "./c01/ChatApp"
 import CommentBox from "./c02/CommentBox"
 import { TabSelectorSample } from "./c02/TabSelector"
@@ -85,7 +85,7 @@ class App extends React.PureComponent {
   render() {
     const currentPage = document.location.hash.replace(/#\/?/, "")
 
-    let CurrentPage = routeMap[currentPage] || Hello
+    let CurrentPage = routeMap[currentPage] || <h1>Click the left side menu to navigate !</h1>
     if (currentPage.match(/\/user\/\w+|\/list-page/)) {
       CurrentPage = ListSample
     }

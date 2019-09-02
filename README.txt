@@ -76,4 +76,7 @@ VDOM diff
 广度优先分层比较，算法复杂度为 O(n)。
 
 
+Redux 特性：
+single source of truth
+
 
