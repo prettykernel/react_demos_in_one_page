@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import withTimer from "../c06/withTimer"
+import withTimer from "./c06/withTimer"
 import PropTypes from "prop-types"
 
 
@@ -34,10 +34,10 @@ export class ChatApp extends Component {
 
   render() {
     return <>
-        <MessageList messages={this.state.messages} />
-        <input value={this.state.inputMsg} onChange={this.handleInput} />
-        <button onClick={this.handleSend}>Send</button>
-        <h2>{this.props.time.toLocaleString()}</h2>
+      <MessageList messages={this.state.messages} />
+      <input value={this.state.inputMsg} onChange={this.handleInput} />
+      <button onClick={this.handleSend}>Send</button>
+      <h2>{this.props.time.toLocaleString()}</h2>
     </>
   }
 }

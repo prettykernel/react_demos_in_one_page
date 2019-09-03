@@ -1,7 +1,7 @@
 import React from "react"
 import { render } from "react-dom"
 
-import ChatApp from "./c01/ChatApp"
+import ChatApp from "./ChatApp"
 import CommentBox from "./c02/CommentBox"
 import { TabSelectorSample } from "./c02/TabSelector"
 import { StatefulTabSelectSample } from "./c02/StatefulTabSelector"
