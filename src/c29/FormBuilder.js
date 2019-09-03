@@ -131,7 +131,8 @@ class FormBuilder extends Component {
     };
 
     if (!element.id) {
-      // widgetProps.id = formItemProps.id = getId();
+      // 下一行默认被注释
+      widgetProps.id = formItemProps.id = getId();
     }
 
     const { getFieldDecorator } = this.props.form;

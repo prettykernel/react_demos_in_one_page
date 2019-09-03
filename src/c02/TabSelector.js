@@ -16,17 +16,17 @@ export default class TabSelector extends PureComponent {
   }
 
   render() {
-    const { options, value, onChange } = this.props
+    const { options, onChange } = this.props
     return (
       <div className="tab-selector">
         <ul>
-          {options.map(opt => (
+          {options.map(({name, value}) => (
             <li
-              key={opt.value}
-              className={`tab-item ${opt.value === this.props.value ? "selected" : ""}`}
-              onClick={() => this.props.onChange(opt.value)}
+              key={value}
+              className={`tab-item ${value === this.props.value ? "selected" : ""}`}
+              onClick={() => onChange(value)}
             >
-              {opt.name}
+              {name}
             </li>
           ))}
         </ul>
@@ -49,11 +49,7 @@ export class TabSelectorSample extends PureComponent {
   render() {
     return <>
       Select color:
-      <TabSelector
-        options={options}
-        value={this.state.color}
-        onChange={c => this.setState({ color: c })}
-      />
+      <TabSelector options={options} value={this.state.color} onChange={c => this.setState({ color: c })} />
     </>
   }
 }

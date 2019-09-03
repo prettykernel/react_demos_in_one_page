@@ -1,20 +1,20 @@
-import React, { Component, PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { Component, PureComponent } from "react"
+import PropTypes from "prop-types"
 
 export default class StatefulTabSelect extends Component {
   static propTypes = {
     initialValue: PropTypes.string,
     value: PropTypes.string,
     options: PropTypes.array,
-    onChange: PropTypes.func
-  };
+    onChange: PropTypes.func,
+  }
 
-  state = { value: null };
+  state = { value: null }
 
   static defaultProps = {
     value: null,
     options: [],
-    onChange: () => {}
+    onChange: () => {},
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {

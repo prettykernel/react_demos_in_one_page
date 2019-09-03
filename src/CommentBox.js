@@ -1,15 +1,16 @@
 import React, { PureComponent } from "react"
 import PropTypes from "prop-types"
 
-import withTimer from "../c06/withTimer"
+import withTimer from "./c06/withTimer"
 import "./CommentBox.css"
-
 
 const comments = [
   { id: 0, author: "Nate",  content: "Hello React! This is a sample comment." },
   { id: 1, author: "Kevin", content: "Hello Redux!" },
   { id: 2, author: "Bood",  content: "Hello Rekit!" },
 ]
+
+const CommentsContext = React.createContext()
 
 
 class Comment extends PureComponent {
@@ -22,7 +23,7 @@ class Comment extends PureComponent {
     return (
       <div className="comment-item">
         <span className="avatar" />
-        <a href="#">{author}</a>
+        <a href="https://github.com/prettykernel">{author}</a>
         <p>{content}</p>
       </div>
     )
@@ -31,26 +32,33 @@ class Comment extends PureComponent {
 
 
 class CommentList extends PureComponent {
-  static propTypes = {
-    comments: PropTypes.array.isRequired,
-  }
+  static contextType = CommentsContext
 
   render() {
     return (
       <div className="comment-list">
-        {this.props.comments.map((comment, i) => <Comment key={comment.id} comment={comment} />)}
+        {this.context.map((comment, i) => <Comment key={comment.id} comment={comment} />)}
       </div>
     )
   }
 }
-
+/*
+等价于：
+class CommentList extends PureComponent {
+  render() {
+    return (
+      <div className="comment-list">
+        <CommentsContext.Consumer>
+          {context => context.map((comment, i) => <Comment key={comment.id} comment={comment} />)}
+        </CommentsContext.Consumer>
+      </div>
+    )
+  }
+}
+*/
 
 
 class CommentForm extends PureComponent {
-  static propTypes = {
-    comments: PropTypes.array.isRequired,
-  }
-
   handleSubmit = (event) => {
     event.preventDefault()
   }
@@ -71,12 +79,14 @@ class CommentForm extends PureComponent {
 class CommentBox extends React.PureComponent {
   render() {
     return (
-      <div className="comment-box">
-        <h1>Comments ({comments.length})</h1>
-        <CommentList comments={comments} />
-        <CommentForm comments={comments} />
-        {this.props.time.getTime()}
-      </div>
+      <CommentsContext.Provider value={comments}>
+        <div className="comment-box">
+          <h1>Comments ({this.context.length})</h1>
+          <CommentList />
+          <CommentForm />
+          {this.props.time.getTime()}
+        </div>
+      </CommentsContext.Provider>
     )
   }
 }
