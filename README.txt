@@ -56,10 +56,10 @@ React 组件可以理解为纯函数，输入是 props 和 state，输出是 Vie
 2. 组件尽量无状态，所需数据通过 props 获取
 
 getDerivedStateFromProps 用法：
-1. 当 stae 需要从 props 初始化时使用 
+1. 当 state 需要从 props 初始化时使用 
 2. 尽量不要使用：维护两者的状态一致性会增加复杂度？？？ antd 例子 
 3. 每次 render 都会调用 
-4. 典型场景：S表单控件获取默认值 
+4. 典型场景：表单控件获取默认值 
 
 getSnapshotBeforeUpdate 用法：
 1. 在页面 render 前调用，state 已更新
@@ -79,11 +79,16 @@ VDOM diff
 Redux 特性：
 single source of truth
 可预测性：state + action = newstate
+纯函数更新 Store。每接收一个 action，就产生一个新的 state。
 
+Store，Action，Reducer，View，Middleware
 
+单个 Action 和 Reducer 放入同一文件
 
-
-
+const store = createStore(reducer)
+getState()
+dispatch(action)
+subscribe(listener)
 
 
 
