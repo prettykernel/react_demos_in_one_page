@@ -38,7 +38,6 @@ export default class SnapshotSample extends PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState, prevScrollHeight) {
-    console.log(this)
     const scrollTop = this.rootNode.scrollTop;
     if (scrollTop < 5) return;
     this.rootNode.scrollTop =
@@ -58,8 +57,6 @@ export default class SnapshotSample extends PureComponent {
     );
   }
 }
-
-
 
 
 
