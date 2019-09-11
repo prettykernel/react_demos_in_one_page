@@ -26,20 +26,19 @@ export default class SnapshotSample extends PureComponent {
       this.handleNewMessage();
     }, 100);
   }
+
   componentWillUnmount() {
     window.clearInterval(this.interval);
   }
 
+  // 移动滚轮后，保持内容不动
+  // 默认可视区内容会不断重绘。注释掉 getSnapshotBeforeUpdate 和 componentDidUpdate 即可看到效果
   getSnapshotBeforeUpdate() {
     return this.rootNode.scrollHeight;
   }
 
-  componentDidUpdate(
-    prevProps,
-    prevState,
-    prevScrollHeight
-  ) {
-    console.log(this.rootNode.scrollTop)
+  componentDidUpdate(prevProps, prevState, prevScrollHeight) {
+    console.log(this)
     const scrollTop = this.rootNode.scrollTop;
     if (scrollTop < 5) return;
     this.rootNode.scrollTop =

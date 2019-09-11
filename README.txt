@@ -64,6 +64,10 @@ getDerivedStateFromProps 用法：
 getSnapshotBeforeUpdate 用法：
 1. 在页面 render 前调用，state 已更新
 2. 典型场景：获取 render 前的 DOM 状态
+如果触发某些回调函数时需要用到 DOM 元素的状态，则将对比或计算的过程迁移至 getSnapshotBeforeUpdate，然后在 componentDidUpdate 中统一触发回调或更新状态。
+如涉及大量的计算，可在 getSnapshotBeforeUpdate 完成计算，再在 componentDidUpdate 一次完成更新。
+因为 getSnapshotBeforeUpdate 已经到了 commit 阶段，因此这个函数只会运行一次。
+getSnapshotBeforeUpdate 替换之前 willxxxx，给想读取 dom 的用户一些空间，强逼用户到 mount 阶段才能操作 dom
 
 componentDidUpdate
 典型场景：页面需要根据 props 变化重新获取数据
